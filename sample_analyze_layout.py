@@ -13,15 +13,6 @@ DESCRIPTION:
     This sample demonstrates how to extract text, tables, figures, selection marks and document structure (e.g., sections) information 
     from a document given through a file.
 
-    ------Set your environment variables------
-    It is recommended to use environment variables to store your endpoint and key. 
-    For example, in Linux or macOS:
-        export DOCUMENTINTELLIGENCE_ENDPOINT=<yourEndpoint>
-        export DOCUMENTINTELLIGENCE_API_KEY=<yourKey>
-    For Windows:
-        setx DOCUMENTINTELLIGENCE_ENDPOINT <yourEndpoint>
-        setx DOCUMENTINTELLIGENCE_API_KEY <yourKey>
-
     ------Install the Document Intelligence library------
     pip install azure-ai-documentintelligence
 
@@ -37,12 +28,9 @@ from azure.ai.documentintelligence.models import AnalyzeDocumentRequest
 
 
 def analyze_layout_from_url():
-    # Set your endpoint and key from environment variables
-    # For how to set them, see PREREQUISITES above.
-    # endpoint = os.environ["DOCUMENTINTELLIGENCE_ENDPOINT"]
-    # key = os.environ["DOCUMENTINTELLIGENCE_API_KEY"]
 
     document_intelligence_client = DocumentIntelligenceClient(
+        # Set local endpoint or cluster endpoint and fake key
         endpoint="http://localhost:5000", 
         credential=AzureKeyCredential("fake-key")
     )

@@ -1,4 +1,4 @@
-# Document Intelligence Layout Container Sample
+# Document Intelligence Connected Container Layout  Sample
 
 This repository is a minimal local setup for running the Azure AI Document Intelligence Layout v4.0 connected container with Docker Compose and calling it from Python.
 
