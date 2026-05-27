@@ -12,6 +12,9 @@ venv/
 # Generated container runtime output
 output/
 
+# Shared mount directory
+shared/
+
 # Test and tool caches
 .pytest_cache/
 .mypy_cache/
@@ -21,6 +24,4 @@ output/
 .idea/
 Thumbs.db
 .DS_Store
-
-output
-shared
+.claude/
