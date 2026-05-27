@@ -1,14 +1,4 @@
-version: '3.3'
 services:
-  # nginx:
-  #   image: nginx:alpine
-  #   container_name: reverseproxy
-  #   depends_on:
-  #     - layout
-  #   volumes:
-  #     - ${NGINX_CONF_FILE}:/etc/nginx/nginx.conf
-  #   ports:
-  #     - "5000:5000"
   layout:
     container_name: azure-cognitive-service-layout
     image: mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout-4.0:latest

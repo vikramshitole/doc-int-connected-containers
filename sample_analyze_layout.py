@@ -17,8 +17,8 @@ DESCRIPTION:
     pip install azure-ai-documentintelligence
 
     ------Run this Python sample------
-    Save the file as "sample_analyze_layout_v2.py" and run:
-        python sample_analyze_layout_v2.py
+    Run:
+        python sample_analyze_layout.py
 """
 
 import os
@@ -27,7 +27,7 @@ from azure.ai.documentintelligence import DocumentIntelligenceClient
 from azure.ai.documentintelligence.models import AnalyzeDocumentRequest
 
 
-def analyze_layout_from_url():
+def analyze_layout_from_file():
 
     document_intelligence_client = DocumentIntelligenceClient(
         # Set local endpoint or cluster endpoint and fake key
@@ -35,11 +35,13 @@ def analyze_layout_from_url():
         credential=AzureKeyCredential("fake-key")
     )
 
-    # Analyze a sample document layout using its URL
+    # Analyze a sample document layout from a local file
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    pdf_path = os.path.join(script_dir, "sample-layout.pdf")
     bytes_data = None
-    with open("sample-layout.pdf", "rb") as f:
+    with open(pdf_path, "rb") as f:
         bytes_data = f.read()
-    print(f"Read {len(bytes_data)} bytes from sample-layout.pdf")
+    print(f"Read {len(bytes_data)} bytes from {pdf_path}")
     poller = document_intelligence_client.begin_analyze_document(
         "prebuilt-layout", AnalyzeDocumentRequest(bytes_source=bytes_data )
     )
@@ -93,7 +95,7 @@ if __name__ == "__main__":
 
     try:
         load_dotenv(find_dotenv())
-        analyze_layout_from_url()
+        analyze_layout_from_file()
     except HttpResponseError as error:
         # Examples of how to check an HttpResponseError
         if error.error is not None:
